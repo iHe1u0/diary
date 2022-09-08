@@ -1,21 +1,27 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
-#include <QMainWindow>
+#include <qmainwindow.h>
+#include <qstandarditemmodel.h>
+
+#include "sqlitehelper.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui {
+class MainWindow;
+}
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow {
+  Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+ public:
+  MainWindow(QWidget *parent = nullptr);
+  ~MainWindow();
 
-private:
-    Ui::MainWindow *ui;
+  SqliteHelper *dbHelper;
+  QStandardItemModel listModel;
+  QStandardItem *rootItem;
+
+ private:
+  Ui::MainWindow *ui;
 };
-#endif // MAINWINDOW_H
